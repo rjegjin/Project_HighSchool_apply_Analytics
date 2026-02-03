@@ -1,0 +1,39 @@
+# General
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.env
+venv/
+.venv/
+env/
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Node.js (if applicable)
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Project Specific (Data & Output)
+# 데이터 보안 및 용량 관리를 위해 로컬 데이터 폴더 제외 권장
+data/input/
+data/processed/
+data/reference/
+output/
