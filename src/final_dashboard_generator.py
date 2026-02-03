@@ -5,8 +5,8 @@ import os
 # [설정] 분석 결과 엑셀 파일 경로
 # ==========================================
 # 앞 단계에서 생성된 엑셀 파일명과 정확히 일치해야 합니다.
-INPUT_EXCEL = "2025_후기고_통계적_심층분석_최종.xlsx"
-OUTPUT_HTML = "2025_후기고_최종리포트.html"
+INPUT_EXCEL = os.path.join("data", "processed", "Step3_학교유형화_및_통계검증.xlsx")
+OUTPUT_HTML = os.path.join("output", "Insight_Dashboard_2025.html")
 
 def generate_html_dashboard():
     print("🎨 엑셀 기반 HTML 대시보드 생성을 시작합니다...")

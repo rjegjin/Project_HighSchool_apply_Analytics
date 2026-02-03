@@ -5,8 +5,8 @@ import os
 # ==========================================
 # [설정] 파일명
 # ==========================================
-INPUT_FILE = "2025_후기고_배정결과.xlsx"
-OUTPUT_FILE = "2025_후기고_최종분석결과.xlsx"
+INPUT_FILE = os.path.join("data", "input", "2025_후기고_배정결과.xlsx")
+OUTPUT_FILE = os.path.join("data", "processed", "Step1_전처리_익명화_마스터.xlsx")
 
 # 마스킹 대상 키워드 (헤더에 이 글자가 포함되면 마스킹)
 MASK_KEYWORDS = ['성명', '이름', '생년월일', '접수번호', '전화', '연락처', '☎']

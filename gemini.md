@@ -36,9 +36,19 @@ source venv/bin/activate
 ```
 
 ## 사용법
-`src` 폴더 내의 스크립트를 실행하여 분석을 수행합니다.
+`data/input/` 폴더에 `2025_후기고_배정결과.xlsx` 파일을 위치시킨 후, `src` 폴더 내의 스크립트를 순서대로 실행합니다.
 
 ```bash
+# 1. 전처리 및 익명화 (Step 1 생성)
+python src/pii_masking.py
+
+# 2. 기초 선호도 및 지역 흐름 분석 (Step 2 생성)
+python src/research_analytics.py
+
+# 3. 심층 통계 및 학교 유형화 (Step 3 생성)
 python src/statistical_deep_research.py
+
+# 4. 최종 대시보드 생성 (HTML 결과물)
 python src/final_dashboard_generator.py
 ```
+*최종 결과물은 `output/Insight_Dashboard_2025.html`에 저장됩니다.*

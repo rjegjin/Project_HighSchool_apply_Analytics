@@ -4,8 +4,8 @@ import os
 # ==========================================
 # [설정] 파일명 (마스킹 등 전처리가 끝난 파일 권장하지만 원본도 가능)
 # ==========================================
-INPUT_FILE = "2025_후기고_배정결과.xlsx" # 또는 마스킹된 파일
-OUTPUT_FILE = "2025_후기고_심층연구보고서.xlsx"
+INPUT_FILE = os.path.join("data", "processed", "Step1_전처리_익명화_마스터.xlsx") # 또는 마스킹된 파일
+OUTPUT_FILE = os.path.join("data", "processed", "Step2_지망선호도_및_지역흐름.xlsx")
 
 # 분석용 핵심 컬럼 키워드
 KEY_DONG = "행정동"       # 주소(동)
@@ -32,14 +32,26 @@ def run_research():
         return
 
     try:
-        df = pd.read_excel(INPUT_FILE)
+        # PII masking 결과 파일의 '보안_RawData' 시트를 읽어야 함
+        # 시트 이름이 없을 경우(원본 파일 사용 시)를 대비해 try-except 또는 기본값 처리
+        try:
+            df = pd.read_excel(INPUT_FILE, sheet_name='보안_RawData')
+        except:
+            print("⚠ '보안_RawData' 시트가 없어 첫 번째 시트를 읽습니다.")
+            df = pd.read_excel(INPUT_FILE)
+            
     except Exception as e:
         print(f"❌ 로드 실패: {e}")
         return
 
     # 공백 제거
-    for col in df.select_dtypes(include=['object']).columns:
-        df[col] = df[col].astype(str).str.strip()
+    # for col in df.select_dtypes(include=['object']).columns: (Old way)
+    # New way compatible with future pandas:
+    object_cols = df.select_dtypes(include=['object']).columns
+    if len(object_cols) > 0:
+         df[object_cols] = df[object_cols].astype(str).apply(lambda x: x.str.strip())
+
+    print(f"DEBUG: Loaded Columns: {list(df.columns)}") # Debug print
 
     # 컬럼 매핑
     col_dong = find_col(df, KEY_DONG)

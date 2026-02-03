@@ -8,8 +8,8 @@ import os
 # ==========================================
 # [설정] 입력 파일 (엑셀 파일 1개만 있으면 됩니다)
 # ==========================================
-INPUT_EXCEL = "2025_후기고_심층연구보고서.xlsx"
-OUTPUT_FILE = "2025_후기고_통계적_심층분석_최종.xlsx"
+INPUT_EXCEL = os.path.join("data", "processed", "Step2_지망선호도_및_지역흐름.xlsx")
+OUTPUT_FILE = os.path.join("data", "processed", "Step3_학교유형화_및_통계검증.xlsx")
 
 # [중요] 최소 표본 기준 (이 숫자보다 적으면 통계 분석에서 제외)
 MIN_SAMPLE_SCHOOL = 10  # 학교별 최소 배정 인원

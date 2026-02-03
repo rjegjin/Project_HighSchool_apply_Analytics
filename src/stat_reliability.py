@@ -9,8 +9,8 @@ import os
 # [설정] 입력 양식 수정 (단일 엑셀 파일 로드)
 # ==========================================
 # 여러 개의 csv 파일 대신, 앞 단계에서 만든 엑셀 파일 하나만 있으면 됩니다.
-INPUT_EXCEL = "2025_후기고_심층연구보고서.xlsx"
-OUTPUT_FILE = "2025_후기고_통계적_심층분석_신뢰도검증.xlsx"
+INPUT_EXCEL = os.path.join("data", "processed", "Step2_지망선호도_및_지역흐름.xlsx")
+OUTPUT_FILE = os.path.join("data", "processed", "Step3_Sub_신뢰도검증_상세.xlsx")
 
 # [중요] 최소 표본 기준 (이 숫자보다 적으면 통계 분석에서 제외)
 MIN_SAMPLE_SCHOOL = 10  # 학교별 최소 배정 인원
