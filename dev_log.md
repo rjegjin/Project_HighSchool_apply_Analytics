@@ -38,5 +38,14 @@
   - **Shannon Entropy**: Calculated diversity and segregation indices for districts and schools.
   - **Network Centrality**: Analyzed district-school interaction hubs using Eigenvector Centrality.
   - **Spatial Interaction Model**: Estimated interaction intensity ratio as a proxy for gravity models.
-- **Dependencies**: Added `statsmodels` and `networkx` to `unified_venv`.
+- **Dependencies**: Added `statsmodels`, `networkx`, `matplotlib`, `seaborn` to `unified_venv`.
 - **Output**: Generated `data/processed/Step4_대학원수준_심층분석.xlsx`.
+
+## 2026-02-13 (Advanced Visualization & Interpretation)
+- **Visualization**: Created `src/advanced_visualization.py` to generate high-quality statistical plots.
+- **Plots Generated**:
+  - PCA-GMM Cluster Scatter Plot
+  - District/School Entropy Bar Charts
+  - Network Centrality Ranking
+  - Spatial Interaction Heatmap
+- **Storage**: Results saved to `output/advanced_plots/`.
