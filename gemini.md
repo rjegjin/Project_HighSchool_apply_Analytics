@@ -21,18 +21,11 @@
   - `statistical_deep_research.py`: 심층 통계 연구
 
 ## 환경 설정
-이 프로젝트는 Python 기반으로 작성되었습니다. 필요한 라이브러리를 설치하여 실행할 수 있습니다.
+이 프로젝트는 Python 기반으로 작성되었습니다. **CRITICAL:** Always use root `unified_venv` at `/home/rjegj/projects/unified_venv`. Do not create local venvs.
 
 ```bash
-# 가상환경 생성 및 활성화 (예시)
-python -m venv venv
-# Windows
-.\venv\Scripts\activate
-# Mac/Linux
-source venv/bin/activate
-
-# 의존성 설치 (requirements.txt가 있다면)
-# pip install -r requirements.txt
+# 가상환경 활성화 (Example)
+source /home/rjegj/projects/unified_venv/bin/activate
 ```
 
 ## 사용법

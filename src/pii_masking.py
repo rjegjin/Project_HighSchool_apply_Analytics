@@ -5,7 +5,7 @@ import os
 # ==========================================
 # [설정] 파일명
 # ==========================================
-INPUT_FILE = os.path.join("data", "input", "2025_후기고_배정결과.xlsx")
+INPUT_FILE = os.path.join("data", "input", "2026학년도 후기고.xlsx")
 OUTPUT_FILE = os.path.join("data", "processed", "Step1_전처리_익명화_마스터.xlsx")
 
 # 마스킹 대상 키워드 (헤더에 이 글자가 포함되면 마스킹)
@@ -30,6 +30,28 @@ def run_process():
     try:
         df = pd.read_excel(INPUT_FILE)
         print(f"✔ 파일 로드 성공: 총 {len(df)}명")
+
+        # [추가] 첫 번째 행이 서브헤더('1지망', '2지망')인 경우 처리
+        if '1지망' in df.iloc[0].values:
+            print("   - 서브헤더 탐색됨. 컬럼명 재구성 중...")
+            new_cols = []
+            last_valid_col = ""
+            for col, sub in zip(df.columns, df.iloc[0]):
+                col_str = str(col)
+                sub_str = str(sub) if pd.notna(sub) else ""
+                
+                if 'Unnamed' not in col_str:
+                    last_valid_col = col_str
+                
+                if sub_str:
+                    new_cols.append(f"{last_valid_col}_{sub_str}")
+                else:
+                    new_cols.append(last_valid_col)
+            
+            df.columns = new_cols
+            df = df.drop(df.index[0]).reset_index(drop=True)
+            print(f"   - 재구성된 컬럼: {list(df.columns[:10])} ...")
+
     except Exception as e:
         print(f"❌ 엑셀 읽기 실패: {e}")
         return

@@ -29,3 +29,14 @@
     2. `src/research_analytics.py` → `data/processed/Step2_지망선호도_및_지역흐름.xlsx`
     3. `src/statistical_deep_research.py` → `data/processed/Step3_학교유형화_및_통계검증.xlsx`
     4. `src/final_dashboard_generator.py` → `output/Insight_Dashboard_2025.html`
+
+## 2026-02-13 (Advanced Statistical Analysis)
+- **Feature Enhancement**: Implemented graduate-level statistical methods for high school application analysis.
+- **New Module**: Created `src/advanced_analytics_engine.py` with the following features:
+  - **PCA & Factor Analysis**: Derived latent factors for school popularity.
+  - **Gaussian Mixture Models (GMM)**: Probabilistic clustering of school types.
+  - **Shannon Entropy**: Calculated diversity and segregation indices for districts and schools.
+  - **Network Centrality**: Analyzed district-school interaction hubs using Eigenvector Centrality.
+  - **Spatial Interaction Model**: Estimated interaction intensity ratio as a proxy for gravity models.
+- **Dependencies**: Added `statsmodels` and `networkx` to `unified_venv`.
+- **Output**: Generated `data/processed/Step4_대학원수준_심층분석.xlsx`.
